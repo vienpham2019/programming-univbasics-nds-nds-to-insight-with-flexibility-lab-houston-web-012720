@@ -51,7 +51,6 @@ def gross_per_studio(collection)
   # Hash whose keys are the studio names and whose values are the sum
   # total of all the worldwide_gross numbers for every movie in the input Hash
   my_hash = {}
-  value = 0
   collection.each do |e|
     key = e[:studio]
     gross = e[:worldwide_gross]
