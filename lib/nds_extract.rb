@@ -93,6 +93,7 @@ def movies_with_directors_set(source)
     e[:movies].each do |n|
       new_hash[:director_name] = e[:name]
       new_hash[:title] = n[:title]
+      new_hash[:worldwide_gross] = n[:worldwide_gross]
     end
     if e[:name] == "Byron Poodle"
       new_array[0] = [new_hash]
