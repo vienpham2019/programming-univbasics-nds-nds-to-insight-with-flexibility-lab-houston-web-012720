@@ -5,19 +5,7 @@ require 'directors_database'
 # [3,4,5], [6]] => [1,2,3,4,5,6].
 
 def flatten_a_o_a(aoa)
-  result = []
-  i = 0
-
-  while i < aoa.length do
-    k = 0
-    while k < aoa[i].length do
-      result << aoa[i][k]
-      k += 1
-    end
-    i += 1
-  end
-
-  result
+  aoa.flatten
 end
 
 def movie_with_director_name(director_name, movie_data)
@@ -111,7 +99,6 @@ end
 # call code. You'll have to "see-saw" to get this to work!
 
 def studios_totals(nds)
-  binding.pry
   a_o_a_movies_with_director_names = movies_with_directors_set(nds)
   movies_with_director_names = flatten_a_o_a(a_o_a_movies_with_director_names)
   return gross_per_studio(movies_with_director_names)
