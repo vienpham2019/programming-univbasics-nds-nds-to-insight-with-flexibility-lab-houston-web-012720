@@ -88,7 +88,7 @@ def movies_with_directors_set(source)
     elsif e[:name] == "Nancy Drew"
       new_array.push([new_hash])
     else
-      new_array.insert(1,[new_hash])
+      new_array << [new_hash] 
     end
   end
   new_array
