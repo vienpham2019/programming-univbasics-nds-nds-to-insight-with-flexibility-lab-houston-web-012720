@@ -76,18 +76,20 @@ def movies_with_directors_set(source)
   # to have a :director_name key added to it.
   new_array = [nil]
   source.each do |e|
+    element_array = []
     e[:movies].each do |n|
       new_hash = {}
       new_hash[:director_name] = e[:name]
       new_hash[:studio] = n[:studio]
       new_hash[:worldwide_gross] = n[:worldwide_gross]
+      element_array << new_hash
     end
     if e[:name] == "Byron Poodle"
-      new_array.unshift([new_hash])
+      new_array.unshift(element_array)
     elsif e[:name] == "Nancy Drew"
-      new_array.push([new_hash])
+      new_array.push(element_array)
     else
-      new_array << [new_hash] 
+      new_array << element_array
     end
   end
   new_array
