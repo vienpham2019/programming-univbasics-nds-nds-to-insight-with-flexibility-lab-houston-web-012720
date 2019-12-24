@@ -84,7 +84,7 @@ def movies_with_directors_set(source)
       new_hash[:worldwide_gross] = n[:worldwide_gross]
     end
     if e[:name] == "Byron Poodle"
-      new_array[0] = [new_hash]
+      new_array.unshift([new_hash])
     elsif e[:name] == "Nancy Drew"
       new_array.push([new_hash])
     else
