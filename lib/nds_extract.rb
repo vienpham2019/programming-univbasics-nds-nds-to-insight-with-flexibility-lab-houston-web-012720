@@ -74,7 +74,7 @@ def movies_with_directors_set(source)
   #
   # Array of Arrays containing all of a director's movies. Each movie will need
   # to have a :director_name key added to it.
-  new_array = [nil]
+  new_array = []
   source.each do |e|
     element_array = []
     e[:movies].each do |n|
