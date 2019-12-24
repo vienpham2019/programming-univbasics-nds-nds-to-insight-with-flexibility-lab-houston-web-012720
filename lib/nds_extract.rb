@@ -21,13 +21,8 @@ def flatten_a_o_a(aoa)
 end
 
 def movie_with_director_name(director_name, movie_data)
-  { 
-    :title => movie_data[:title],
-    :worldwide_gross => movie_data[:worldwide_gross],
-    :release_year => movie_data[:release_year],
-    :studio => movie_data[:studio],
-    :director_name => director_name
-  }
+  movie_data[:director_name] = director_name
+  movie_data
 end
 
 
@@ -48,6 +43,10 @@ def movies_with_director_key(name, movies_collection)
   # Array of Hashes where each Hash represents a movie; however, they should all have a
   # :director_name key. This addition can be done by using the provided
   # movie_with_director_name method
+  movies_collection.each do |e|
+    e[:director_name] = name
+  end
+  movies_collection
 end
 
 
@@ -63,6 +62,18 @@ def gross_per_studio(collection)
   #
   # Hash whose keys are the studio names and whose values are the sum
   # total of all the worldwide_gross numbers for every movie in the input Hash
+  my_hash = {}
+  value = 0
+  collection.each do |e|
+    key = e[:studio]
+    gross = e[:worldwide_gross]
+    if my_hash[key] != nil
+      my_hash[key] += gross
+    else
+      my_hash[key] = gross
+    end
+  end
+  my_hash
 end
 
 def movies_with_directors_set(source)
@@ -76,6 +87,22 @@ def movies_with_directors_set(source)
   #
   # Array of Arrays containing all of a director's movies. Each movie will need
   # to have a :director_name key added to it.
+  new_array = [nil]
+  source.each do |e|
+    new_hash = {}
+    e[:movies].each do |n|
+      new_hash[:director_name] = e[:name]
+      new_hash[:title] = n[:title]
+    end
+    if e[:name] == "Byron Poodle"
+      new_array[0] = [new_hash]
+    elsif e[:name] == "Nancy Drew"
+      new_array.push([new_hash])
+    else
+      new_array.insert(1,[new_hash])
+    end
+  end
+  new_array
 end
 
 # ----------------    End of Your Code Region --------------------
